@@ -40,7 +40,7 @@ const handleError = (error: Error): void => {
 const fetchRandomActivity = async (): Promise<Activity> => {
   try {
     const response: Response = await fetch(
-      'http://www.boredapi.com/api/activity/'
+      'https://www.boredapi.com/api/activity/'
     );
     const data = await response.json();
     const activity: Activity = {
@@ -91,7 +91,7 @@ const fetchSpecificActivity = async (typeOfActivity: string): Promise<void> => {
 
   try {
     const response: Response = await fetch(
-      `http://www.boredapi.com/api/activity?type=${typeOfActivity}`
+      `https://www.boredapi.com/api/activity?type=${typeOfActivity}`
     );
     const data = await response.json();
     const activity: Activity = {

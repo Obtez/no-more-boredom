@@ -55,7 +55,7 @@ var fetchRandomActivity = function () { return __awaiter(_this, void 0, void 0, 
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 3, , 4]);
-                return [4, fetch('http://www.boredapi.com/api/activity/')];
+                return [4, fetch('https://www.boredapi.com/api/activity/')];
             case 1:
                 response = _a.sent();
                 return [4, response.json()];
@@ -117,7 +117,7 @@ var fetchSpecificActivity = function (typeOfActivity) { return __awaiter(_this, 
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 4, , 5]);
-                return [4, fetch("http://www.boredapi.com/api/activity?type=" + typeOfActivity)];
+                return [4, fetch("https://www.boredapi.com/api/activity?type=" + typeOfActivity)];
             case 2:
                 response = _a.sent();
                 return [4, response.json()];
