@@ -18,6 +18,9 @@ const heading2: HTMLHeadingElement = document.querySelector('h2');
 const mainBtn: HTMLButtonElement = document.querySelector('#main-btn');
 
 // Activity Tiles
+const tilesSection: HTMLElement = document.querySelector(
+  '#activity-tiles-section'
+);
 const activityTiles: NodeList = document.querySelectorAll('.activity-tile');
 
 // Main Functions
@@ -49,15 +52,19 @@ const fetchRandomActivity = async (): Promise<Activity> => {
 
 // The website's style changes as soon as the response comes back
 const switchStyling = (): void => {
-  // body and main section switch to a happier tone
-  body.style.backgroundColor = '#ADDEFA';
-  mainSection.style.backgroundImage =
-    "url('./assets/img/happy-background.svg')";
+  body.classList.toggle('bored-bg');
+  body.classList.toggle('happy-bg');
 
-  // main button adjusts to new background + gets new text
-  mainBtn.style.backgroundColor = '#';
-  mainBtn.style.color = '#2D2D2D';
-  mainBtn.innerHTML = 'TRY AGAIN';
+  mainSection.classList.toggle('bored-bg-img');
+  mainSection.classList.toggle('happy-bg-img');
+
+  tilesSection.classList.toggle('bored-tiles-bg');
+  tilesSection.classList.toggle('happy-tiles-bg');
+
+  activityTiles.forEach((tile: HTMLDivElement) => {
+    tile.classList.toggle('bored-tiles-card');
+    tile.classList.toggle('happy-tiles-card');
+  });
 };
 
 const runFetch = async (): Promise<void> => {
@@ -97,6 +104,7 @@ mainBtn.addEventListener('click', runFetch);
 
 activityTiles.forEach((tile: HTMLDivElement) => {
   tile.addEventListener('click', (e: Event) => {
+    console.log(e.target.id);
     const typeOfActivity = (<HTMLDivElement>e.target).dataset.activity;
     fetchSpecificActivity(typeOfActivity);
   });
