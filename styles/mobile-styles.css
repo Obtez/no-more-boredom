@@ -90,7 +90,7 @@ button {
 }
 
 .bored-bg-img {
-  background-image: url('./assets/img/bored-background.svg');
+  background-image: url('../assets/img/bored-background.svg');
 }
 
 .bored-tiles-bg {
@@ -111,7 +111,7 @@ button {
 }
 
 .happy-bg-img {
-  background-image: url('./assets/img/happy-background.svg');
+  background-image: url('../assets/img/happy-background.svg');
 }
 
 .happy-tiles-bg {
