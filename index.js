@@ -37,10 +37,19 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var _this = this;
 var heading = document.querySelector('h1');
 var mainBtn = document.querySelector('#main-btn');
+var filterForm = document.querySelector('#filter-form');
+var typeSelect = document.querySelector('#type');
+var resetFilterBtn = document.querySelector('#reset-filter-btn');
 var handleError = function (error) {
     console.log(error);
     heading.innerHTML = 'Something went wrong...';
     mainBtn.innerHTML = 'Try again';
+};
+var applyFilter = function () {
+    var filter = {
+        type: typeSelect.value
+    };
+    return filter;
 };
 var fetchRandomActivity = function () { return __awaiter(_this, void 0, void 0, function () {
     var response, data, activity, error_1;
@@ -57,11 +66,8 @@ var fetchRandomActivity = function () { return __awaiter(_this, void 0, void 0, 
                 activity = {
                     activity: data.activity,
                     type: data.type,
-                    participants: data.participants,
-                    price: data.price,
                     link: data.link,
-                    key: data.key,
-                    accessibility: data.accessibility
+                    key: data.key
                 };
                 return [2, activity];
             case 3:
@@ -86,5 +92,37 @@ var runFetch = function () { return __awaiter(_this, void 0, void 0, function ()
         }
     });
 }); };
+var runFilteredFetch = function (e) { return __awaiter(_this, void 0, void 0, function () {
+    var filter, baseUrl, queryUrl, response, data, activity;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                e.preventDefault();
+                heading.innerHTML = 'Hmm. How about...';
+                filter = applyFilter();
+                baseUrl = 'http://www.boredapi.com/api/activity/';
+                queryUrl = '';
+                if (filter.type) {
+                    queryUrl = baseUrl + "?type=" + filter.type;
+                }
+                console.log(queryUrl);
+                return [4, fetch(queryUrl)];
+            case 1:
+                response = _a.sent();
+                return [4, response.json()];
+            case 2:
+                data = _a.sent();
+                activity = {
+                    activity: data.activity,
+                    type: data.type,
+                    link: data.link,
+                    key: data.key
+                };
+                heading.innerHTML = activity.activity;
+                return [2];
+        }
+    });
+}); };
 mainBtn.addEventListener('click', runFetch);
+filterForm.addEventListener('submit', runFilteredFetch);
 //# sourceMappingURL=index.js.map
