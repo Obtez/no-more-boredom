@@ -21,7 +21,9 @@ const mainBtn: HTMLButtonElement = document.querySelector('#main-btn');
 const tilesSection: HTMLElement = document.querySelector(
   '#activity-tiles-section'
 );
-const activityTiles: NodeList = document.querySelectorAll('.activity-tile');
+const activityTiles: HTMLDivElement[] = Array.from(
+  document.querySelectorAll('.activity-tile')
+);
 
 // Main Functions
 const handleError = (error: Error): void => {
@@ -52,18 +54,18 @@ const fetchRandomActivity = async (): Promise<Activity> => {
 
 // The website's style changes as soon as the response comes back
 const switchStyling = (): void => {
-  body.classList.toggle('bored-bg');
-  body.classList.toggle('happy-bg');
+  body.classList.remove('bored-bg');
+  body.classList.add('happy-bg');
 
-  mainSection.classList.toggle('bored-bg-img');
-  mainSection.classList.toggle('happy-bg-img');
+  mainSection.classList.remove('bored-bg-img');
+  mainSection.classList.add('happy-bg-img');
 
-  tilesSection.classList.toggle('bored-tiles-bg');
-  tilesSection.classList.toggle('happy-tiles-bg');
+  tilesSection.classList.remove('bored-tiles-bg');
+  tilesSection.classList.add('happy-tiles-bg');
 
   activityTiles.forEach((tile: HTMLDivElement) => {
-    tile.classList.toggle('bored-tiles-card');
-    tile.classList.toggle('happy-tiles-card');
+    tile.classList.remove('bored-tiles-card');
+    tile.classList.add('happy-tiles-card');
   });
 };
 
@@ -104,8 +106,7 @@ mainBtn.addEventListener('click', runFetch);
 
 activityTiles.forEach((tile: HTMLDivElement) => {
   tile.addEventListener('click', (e: Event) => {
-    console.log(e.target.id);
-    const typeOfActivity = (<HTMLDivElement>e.target).dataset.activity;
+    const typeOfActivity = (<HTMLDivElement>e.target).id;
     fetchSpecificActivity(typeOfActivity);
   });
 });

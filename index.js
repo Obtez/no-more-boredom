@@ -41,7 +41,7 @@ var heading1 = document.querySelector('h1');
 var heading2 = document.querySelector('h2');
 var mainBtn = document.querySelector('#main-btn');
 var tilesSection = document.querySelector('#activity-tiles-section');
-var activityTiles = document.querySelectorAll('.activity-tile');
+var activityTiles = Array.from(document.querySelectorAll('.activity-tile'));
 var handleError = function (error) {
     console.log(error);
     heading1.innerHTML = 'Something went wrong...';
@@ -76,15 +76,15 @@ var fetchRandomActivity = function () { return __awaiter(_this, void 0, void 0, 
     });
 }); };
 var switchStyling = function () {
-    body.classList.toggle('bored-bg');
-    body.classList.toggle('happy-bg');
-    mainSection.classList.toggle('bored-bg-img');
-    mainSection.classList.toggle('happy-bg-img');
-    tilesSection.classList.toggle('bored-tiles-bg');
-    tilesSection.classList.toggle('happy-tiles-bg');
+    body.classList.remove('bored-bg');
+    body.classList.add('happy-bg');
+    mainSection.classList.remove('bored-bg-img');
+    mainSection.classList.add('happy-bg-img');
+    tilesSection.classList.remove('bored-tiles-bg');
+    tilesSection.classList.add('happy-tiles-bg');
     activityTiles.forEach(function (tile) {
-        tile.classList.toggle('bored-tiles-card');
-        tile.classList.toggle('happy-tiles-card');
+        tile.classList.remove('bored-tiles-card');
+        tile.classList.add('happy-tiles-card');
     });
 };
 var runFetch = function () { return __awaiter(_this, void 0, void 0, function () {
@@ -142,8 +142,7 @@ var fetchSpecificActivity = function (typeOfActivity) { return __awaiter(_this, 
 mainBtn.addEventListener('click', runFetch);
 activityTiles.forEach(function (tile) {
     tile.addEventListener('click', function (e) {
-        console.log(e.target.id);
-        var typeOfActivity = e.target.dataset.activity;
+        var typeOfActivity = e.target.id;
         fetchSpecificActivity(typeOfActivity);
     });
 });
