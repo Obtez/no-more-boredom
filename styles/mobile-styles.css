@@ -72,7 +72,8 @@ button {
 
 #activity-tiles-container {
   flex-grow: 1;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .activity-tile {
