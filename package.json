@@ -1,0 +1,10 @@
+{
+  "name": "No more boredom",
+  "version": "1.0.0",
+  "description": "A website that gives you a suggestion on what you can do if you are bored using the bored-API.",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "David Beer",
+  "license": "MIT"
+}
