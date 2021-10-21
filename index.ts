@@ -30,20 +30,30 @@ interface Filter {
 const heading: HTMLHeadingElement = document.querySelector('h1');
 const mainBtn: HTMLButtonElement = document.querySelector('#main-btn');
 
-const fetchRandomActivity = async (): Promise<Activity> => {
-  const response = await fetch('http://www.boredapi.com/api/activity/');
-  const data = await response.json();
-  const activity: Activity = {
-    activity: data.activity,
-    type: data.type,
-    participants: data.participants,
-    price: data.price,
-    link: data.link,
-    key: data.key,
-    accessibility: data.accessibility,
-  };
+const handleError = (error: Error): void => {
+  console.log(error);
+  heading.innerHTML = 'Something went wrong...';
+  mainBtn.innerHTML = 'Try again';
+};
 
-  return activity;
+const fetchRandomActivity = async (): Promise<Activity> => {
+  try {
+    const response = await fetch('http://www.boredapi.com/api/activity/');
+    const data = await response.json();
+    const activity: Activity = {
+      activity: data.activity,
+      type: data.type,
+      participants: data.participants,
+      price: data.price,
+      link: data.link,
+      key: data.key,
+      accessibility: data.accessibility,
+    };
+
+    return activity;
+  } catch (error) {
+    handleError(error);
+  }
 };
 
 const runFetch = async (): Promise<void> => {

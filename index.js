@@ -37,11 +37,18 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var _this = this;
 var heading = document.querySelector('h1');
 var mainBtn = document.querySelector('#main-btn');
+var handleError = function (error) {
+    console.log(error);
+    heading.innerHTML = 'Something went wrong...';
+    mainBtn.innerHTML = 'Try again';
+};
 var fetchRandomActivity = function () { return __awaiter(_this, void 0, void 0, function () {
-    var response, data, activity;
+    var response, data, activity, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4, fetch('http://www.boredapi.com/api/activity/')];
+            case 0:
+                _a.trys.push([0, 3, , 4]);
+                return [4, fetch('http://www.boredapi.com/api/activity/')];
             case 1:
                 response = _a.sent();
                 return [4, response.json()];
@@ -57,6 +64,11 @@ var fetchRandomActivity = function () { return __awaiter(_this, void 0, void 0, 
                     accessibility: data.accessibility
                 };
                 return [2, activity];
+            case 3:
+                error_1 = _a.sent();
+                handleError(error_1);
+                return [3, 4];
+            case 4: return [2];
         }
     });
 }); };
