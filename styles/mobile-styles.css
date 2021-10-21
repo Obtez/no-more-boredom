@@ -29,12 +29,13 @@ main {
 }
 
 h1 {
+  font-size: 2.5rem;
   text-align: center;
 }
 
 h2 {
   text-align: center;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
 }
 
 button {
@@ -85,6 +86,7 @@ button {
 }
 
 /* Theme classes */
+/* BORED */
 .bored-bg {
   background-color: #c4ced3;
 }
@@ -106,6 +108,12 @@ button {
   transform: scale(1.02);
 }
 
+.bored-activity-section-bg {
+  background-color: #a9b4b9;
+}
+
+/* HAPPY */
+
 .happy-bg {
   background-color: #addefa;
 }
@@ -125,4 +133,8 @@ button {
 .happy-tiles-card:hover {
   background-color: rgb(135, 243, 108);
   transform: scale(1.02);
+}
+
+.happy-activity-section-bg {
+  background-color: #72cf5b;
 }

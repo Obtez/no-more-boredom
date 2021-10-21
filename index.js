@@ -42,6 +42,7 @@ var heading2 = document.querySelector('h2');
 var mainBtn = document.querySelector('#main-btn');
 var tilesSection = document.querySelector('#activity-tiles-section');
 var activityTiles = Array.from(document.querySelectorAll('.activity-tile'));
+var tilesSectionBackgroundContainer = document.querySelector('#activity-section-bg');
 var handleError = function (error) {
     console.log(error);
     heading1.innerHTML = 'Something went wrong...';
@@ -82,6 +83,8 @@ var switchStyling = function () {
     mainSection.classList.add('happy-bg-img');
     tilesSection.classList.remove('bored-tiles-bg');
     tilesSection.classList.add('happy-tiles-bg');
+    tilesSectionBackgroundContainer.classList.remove('bored-activity-section-bg');
+    tilesSectionBackgroundContainer.classList.add('happy-activity-section-bg');
     activityTiles.forEach(function (tile) {
         tile.classList.remove('bored-tiles-card');
         tile.classList.add('happy-tiles-card');

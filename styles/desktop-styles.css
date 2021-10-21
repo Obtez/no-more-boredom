@@ -1,11 +1,17 @@
-@media screen and (min-width: 425px) and (max-width: 768px) {
+@media screen and (min-width: 1200px) {
+  section {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 769px) {
   h1 {
-    font-size: 2.5rem;
-    align-self: center;
+    font-size: 3.5rem;
   }
 
   h2 {
-    font-size: 2rem;
+    font-size: 3rem;
   }
 
   .btn-primary {
@@ -35,5 +41,13 @@
     display: block;
     font-size: 5rem;
     color: #333;
+  }
+
+  .bored-bg-img {
+    background-image: url('../assets/img/bored-background-desktop.svg');
+  }
+
+  .happy-bg-img {
+    background-image: url('../assets/img/happy-background-desktop.svg');
   }
 }

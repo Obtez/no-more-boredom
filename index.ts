@@ -25,6 +25,10 @@ const activityTiles: HTMLDivElement[] = Array.from(
   document.querySelectorAll('.activity-tile')
 );
 
+const tilesSectionBackgroundContainer: HTMLDivElement = document.querySelector(
+  '#activity-section-bg'
+);
+
 // Main Functions
 const handleError = (error: Error): void => {
   console.log(error);
@@ -62,6 +66,9 @@ const switchStyling = (): void => {
 
   tilesSection.classList.remove('bored-tiles-bg');
   tilesSection.classList.add('happy-tiles-bg');
+
+  tilesSectionBackgroundContainer.classList.remove('bored-activity-section-bg');
+  tilesSectionBackgroundContainer.classList.add('happy-activity-section-bg');
 
   activityTiles.forEach((tile: HTMLDivElement) => {
     tile.classList.remove('bored-tiles-card');
