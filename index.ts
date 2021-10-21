@@ -29,6 +29,91 @@ const tilesSectionBackgroundContainer: HTMLDivElement = document.querySelector(
   '#activity-section-bg'
 );
 
+// Activity Tiles Styling
+const styleTiles = (): void => {
+  activityTiles.forEach((tile: HTMLDivElement, index) => {
+    const screenWidth = window.innerWidth;
+    const width: string = (screenWidth * 0.9).toString() + 'px';
+    const height: string = width;
+    const zIndex: number = activityTiles.length - index;
+    const positionTop: string = (index * -15).toString() + 'px';
+    const opacity: number = zIndex / activityTiles.length;
+
+    tile.style.width = width;
+    tile.style.height = height;
+    tile.style.zIndex = zIndex.toString();
+    tile.style.top = positionTop;
+    tile.style.opacity = opacity.toString();
+  });
+};
+
+// SWIPE EVENT DETECTION
+let touchstartX: number = 0;
+let touchstartY: number = 0;
+let touchendX: number = 0;
+let touchendY: number = 0;
+
+const element: HTMLElement = document.getElementById('education');
+
+const evaluateGesture = (): string => {
+  if (touchendX < touchstartX) {
+    return 'swiped-up';
+  }
+  if (touchendX > touchstartX) {
+    return 'swiped-down';
+  }
+  if (touchendY == touchstartY) {
+    return 'tap';
+  }
+};
+// ____
+
+const handleGesture = (): void => {
+  const gesture: string = evaluateGesture();
+  console.log(gesture);
+};
+
+// Attach swipe event listener to cards
+const attachSwipeEventListener = (): void => {
+  activityTiles.forEach((tile: HTMLDivElement) => {
+    tile.addEventListener(
+      'touchstart',
+      function (e) {
+        touchstartX = e.changedTouches[0].screenX;
+        touchstartY = e.changedTouches[0].screenY;
+      },
+      false
+    );
+
+    tile.addEventListener(
+      'touchend',
+      function (e) {
+        touchendX = e.changedTouches[0].screenX;
+        touchendY = e.changedTouches[0].screenY;
+        handleGesture();
+      },
+      false
+    );
+  });
+};
+
+attachSwipeEventListener();
+
+// Activity Tiles Event Listeners
+const handleSwipe = (e: TouchEvent): void => {};
+
+const activityTilesEventListeners = (): void => {
+  activityTiles.forEach((tile: HTMLDivElement) => {
+    tile.addEventListener('swiped-up', (e: Event) => {
+      console.log(e);
+    });
+  });
+};
+
+activityTilesEventListeners();
+
+styleTiles();
+
 // Main Functions
 const handleError = (error: Error): void => {
   console.log(error);

@@ -67,24 +67,29 @@ button {
 }
 
 #activity-tiles-section > h1 {
-  margin-bottom: 2rem;
+  margin-bottom: 10rem;
 }
 
 #activity-tiles-container {
-  flex-grow: 1;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  position: relative;
 }
 
 .activity-tile {
-  margin-bottom: 1rem;
-  padding: 1rem 2rem;
-  text-align: center;
-  cursor: pointer;
+  position: absolute;
+  padding: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px;
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .activity-icon {
-  display: none;
+  display: block;
+  font-size: 8rem;
+  color: #333;
 }
 
 /* Theme classes */
@@ -102,7 +107,8 @@ button {
 }
 
 .bored-tiles-card {
-  background-color: #9faaaf;
+  /* background-color: #9faaaf; */
+  background-color: #666;
 }
 
 .bored-tiles-card:hover {
