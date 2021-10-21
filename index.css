@@ -11,20 +11,27 @@ body {
 }
 
 main {
+  min-height: 100vh;
+  padding: 0 2rem;
   background-image: url('./assets/img/bored-background.svg');
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: fixed;
-  min-height: 100vh;
-  padding: 0 2rem;
+}
 
+#main-section {
+  min-height: 100vh;
+  padding-bottom: 4rem;
   display: grid;
-  grid-template-rows: 1fr 3fr auto 1fr;
+  grid-template-rows: 1fr 3fr auto;
+}
+
+#main-section > h1 {
+  margin-top: 4rem;
 }
 
 h1 {
   text-align: center;
-  margin-top: 4rem;
 }
 
 h2 {
@@ -45,21 +52,29 @@ button {
   font-size: 1rem;
 }
 
-.btn-secondary {
+#activity-tiles-section {
+  height: 100vh;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
 }
 
-form {
-  display: none;
+#activity-tiles-section > h1 {
+  margin-bottom: 2rem;
 }
 
-.form-group {
+#activity-tiles-container {
+  flex-grow: 1;
+  overflow: scroll;
 }
 
-label {
+.activity-tile {
+  margin-bottom: 1rem;
+  padding: 1rem 2rem;
+  text-align: center;
+  background-color: #f5e021;
+  cursor: pointer;
 }
 
-select {
-}
-
-option {
+.activity-tile:hover {
 }

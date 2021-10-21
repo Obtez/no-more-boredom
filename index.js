@@ -40,19 +40,12 @@ var mainSection = document.querySelector('main');
 var heading1 = document.querySelector('h1');
 var heading2 = document.querySelector('h2');
 var mainBtn = document.querySelector('#main-btn');
-var filterForm = document.querySelector('#filter-form');
-var typeSelect = document.querySelector('#type');
+var activityTiles = document.querySelectorAll('.activity-tile');
 var handleError = function (error) {
     console.log(error);
     heading1.innerHTML = 'Something went wrong...';
     heading2.innerHTML = 'Want to try again?';
     mainBtn.innerHTML = 'Try again';
-};
-var applyFilter = function () {
-    var filter = {
-        type: typeSelect.value
-    };
-    return filter;
 };
 var fetchRandomActivity = function () { return __awaiter(_this, void 0, void 0, function () {
     var response, data, activity, error_1;
@@ -105,26 +98,22 @@ var runFetch = function () { return __awaiter(_this, void 0, void 0, function ()
         }
     });
 }); };
-var runFilteredFetch = function (e) { return __awaiter(_this, void 0, void 0, function () {
-    var filter, baseUrl, queryUrl, response, data, activity;
+var fetchSpecificActivity = function (typeOfActivity) { return __awaiter(_this, void 0, void 0, function () {
+    var response, data, activity, error_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                e.preventDefault();
+                window.scrollTo(0, 0);
                 heading1.innerHTML = '';
-                heading2.innerHTML = 'Hmm. How about...';
-                filter = applyFilter();
-                baseUrl = 'http://www.boredapi.com/api/activity/';
-                queryUrl = '';
-                if (filter.type) {
-                    queryUrl = baseUrl + "?type=" + filter.type;
-                }
-                console.log(queryUrl);
-                return [4, fetch(queryUrl)];
+                heading2.innerHTML = "Hmm. How about...";
+                _a.label = 1;
             case 1:
+                _a.trys.push([1, 4, , 5]);
+                return [4, fetch("http://www.boredapi.com/api/activity?type=" + typeOfActivity)];
+            case 2:
                 response = _a.sent();
                 return [4, response.json()];
-            case 2:
+            case 3:
                 data = _a.sent();
                 activity = {
                     activity: data.activity,
@@ -132,12 +121,24 @@ var runFilteredFetch = function (e) { return __awaiter(_this, void 0, void 0, fu
                     link: data.link,
                     key: data.key
                 };
-                heading1.innerHTML = '';
+                switchStyling();
+                console.log(typeOfActivity);
+                console.log(activity);
                 heading2.innerHTML = activity.activity;
-                return [2];
+                return [3, 5];
+            case 4:
+                error_2 = _a.sent();
+                handleError(error_2);
+                return [3, 5];
+            case 5: return [2];
         }
     });
 }); };
 mainBtn.addEventListener('click', runFetch);
-filterForm.addEventListener('submit', runFilteredFetch);
+activityTiles.forEach(function (tile) {
+    tile.addEventListener('click', function (e) {
+        var typeOfActivity = e.target.dataset.activity;
+        fetchSpecificActivity(typeOfActivity);
+    });
+});
 //# sourceMappingURL=index.js.map
