@@ -1,0 +1,42 @@
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+    align-self: center;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  button {
+  }
+
+  .btn-primary {
+    font-size: 1.5rem;
+  }
+
+  #activity-tiles-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 100% / 3 - 3 * 1rem);
+    gap: 1rem;
+  }
+
+  .activity-tile {
+    margin-bottom: 0;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  .activity-icon {
+    display: block;
+    font-size: 5rem;
+    color: #333;
+  }
+}

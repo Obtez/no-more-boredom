@@ -9,58 +9,71 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&display=swap" rel="stylesheet">
   
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
   <!-- Stylesheet / JavaScript -->
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="mobile-styles.css">
+  <link rel="stylesheet" href="tablet-styles.css">
   <script src="index.js" defer></script>
   <title>Bored?</title>
 </head>
-<body>
-  <main>
+<body class="bored-bg">
+  <main class="bored-bg-img">
     <!-- MAIN SCREEN -->
     <section id="main-section">
       <h1>Bored?</h1>
       <h2>Maybe We Can Help</h2>
-      <button type="button" id="main-btn" class="btn-primary">I WANT TO STOP BEING BORED</button>
+      <button type="button" id="main-btn" class="btn-primary">I'M BORED</button>
     </section>
 
    
   </main>
    <!-- ACTIVITY TILES SCREEN -->
-  <section id="activity-tiles-section">
+  <section id="activity-tiles-section" class="bored-tiles-bg">
     <h1>Choose a Category</h1>
     <div id="activity-tiles-container">
-      <div class="activity-tile" data-activity="education">
+      <div class="activity-tile bored-tiles-card" data-activity="education" id="education">
+        <i class="fas fa-user-graduate activity-icon"></i>
         EDUCATIONAL
       </div>
-      <div class="activity-tile" data-activity="recreational">
+      <div class="activity-tile bored-tiles-card" data-activity="recreational">
+      <i class="fas fa-umbrella-beach activity-icon"></i>
       RECREATIONAL
       </div>
 
-       <div class="activity-tile" data-activity="social">
+       <div class="activity-tile bored-tiles-card" data-activity="social">
+        <i class="fas fa-users activity-icon"></i>
         SOCIAL
       </div>
 
-      <div class="activity-tile" data-activity="diy">
+      <div class="activity-tile bored-tiles-card" data-activity="diy">
+        <i class="fas fa-tools activity-icon"></i>
         DIY
       </div>
 
-      <div class="activity-tile" data-activity="charity">
+      <div class="activity-tile bored-tiles-card" data-activity="charity">
+        <i class="fas fa-hand-holding-heart activity-icon"></i>
         CHARITY
       </div>
 
-      <div class="activity-tile" data-activity="cooking">
+      <div class="activity-tile bored-tiles-card" data-activity="cooking">
+      <i class="fas fa-utensils activity-icon"></i>
       COOKING
       </div>
 
-       <div class="activity-tile" data-activity="relaxation">
+       <div class="activity-tile bored-tiles-card" data-activity="relaxation">
+        <i class="fas fa-spa activity-icon"></i>
         RELAXATION
       </div>
 
-      <div class="activity-tile" data-activity="music">
+      <div class="activity-tile bored-tiles-card" data-activity="music">
+        <i class="fas fa-music activity-icon"></i>
         MUSIC
       </div>
 
-      <div class="activity-tile" data-activity="busywork">
+      <div class="activity-tile bored-tiles-card" data-activity="busywork">
+        <i class="fas fa-lightbulb activity-icon"></i>
         BUSYWORK
       </div>
     </div>
