@@ -47,6 +47,8 @@ const styleTiles = (): void => {
   });
 };
 
+styleTiles();
+
 // SWIPE EVENT DETECTION
 let touchstartX: number = 0;
 let touchstartY: number = 0;
@@ -70,7 +72,11 @@ const evaluateGesture = (): string => {
 
 const handleGesture = (): void => {
   const gesture: string = evaluateGesture();
-  console.log(gesture);
+  if (gesture === 'swiped-up') {
+    const lastTile: HTMLDivElement = activityTiles.shift();
+    activityTiles.push(lastTile);
+    styleTiles();
+  }
 };
 
 // Attach swipe event listener to cards
@@ -111,8 +117,6 @@ const activityTilesEventListeners = (): void => {
 };
 
 activityTilesEventListeners();
-
-styleTiles();
 
 // Main Functions
 const handleError = (error: Error): void => {

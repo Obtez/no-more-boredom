@@ -58,6 +58,7 @@ var styleTiles = function () {
         tile.style.opacity = opacity.toString();
     });
 };
+styleTiles();
 var touchstartX = 0;
 var touchstartY = 0;
 var touchendX = 0;
@@ -76,7 +77,11 @@ var evaluateGesture = function () {
 };
 var handleGesture = function () {
     var gesture = evaluateGesture();
-    console.log(gesture);
+    if (gesture === 'swiped-up') {
+        var lastTile = activityTiles.shift();
+        activityTiles.push(lastTile);
+        styleTiles();
+    }
 };
 var attachSwipeEventListener = function () {
     activityTiles.forEach(function (tile) {
@@ -101,7 +106,6 @@ var activityTilesEventListeners = function () {
     });
 };
 activityTilesEventListeners();
-styleTiles();
 var handleError = function (error) {
     console.log(error);
     heading1.innerHTML = 'Something went wrong...';
