@@ -11,7 +11,10 @@ interface Filter {
 }
 
 // Main Section
-const heading: HTMLHeadingElement = document.querySelector('h1');
+const body: HTMLElement = document.querySelector('body');
+const mainSection: HTMLElement = document.querySelector('main');
+const heading1: HTMLHeadingElement = document.querySelector('h1');
+const heading2: HTMLHeadingElement = document.querySelector('h2');
 const mainBtn: HTMLButtonElement = document.querySelector('#main-btn');
 
 // Filter Section
@@ -19,13 +22,11 @@ const filterForm: HTMLFormElement = document.querySelector('#filter-form');
 
 const typeSelect: HTMLSelectElement = document.querySelector('#type');
 
-const resetFilterBtn: HTMLButtonElement =
-  document.querySelector('#reset-filter-btn');
-
 // Main Functions
 const handleError = (error: Error): void => {
   console.log(error);
-  heading.innerHTML = 'Something went wrong...';
+  heading1.innerHTML = 'Something went wrong...';
+  heading2.innerHTML = 'Want to try again?';
   mainBtn.innerHTML = 'Try again';
 };
 
@@ -56,15 +57,31 @@ const fetchRandomActivity = async (): Promise<Activity> => {
   }
 };
 
+// The website's style changes as soon as the response comes back
+const switchStyling = (): void => {
+  // body and main section switch to a happier tone
+  body.style.backgroundColor = '#ADDEFA';
+  mainSection.style.backgroundImage =
+    "url('./assets/img/happy-background.svg')";
+
+  // main button adjusts to new background + gets new text
+  mainBtn.style.backgroundColor = '#';
+  mainBtn.style.color = '#2D2D2D';
+  mainBtn.innerHTML = 'TRY AGAIN';
+};
+
 const runFetch = async (): Promise<void> => {
-  heading.innerHTML = 'Hmm. How about...';
+  heading1.innerHTML = '';
+  heading2.innerHTML = 'Hmm. How about...';
   const activity = await fetchRandomActivity();
-  heading.innerHTML = activity.activity;
+  switchStyling();
+  heading2.innerHTML = activity.activity;
 };
 
 const runFilteredFetch = async (e: Event): Promise<void> => {
   e.preventDefault();
-  heading.innerHTML = 'Hmm. How about...';
+  heading1.innerHTML = '';
+  heading2.innerHTML = 'Hmm. How about...';
   const filter: Filter = applyFilter();
   const baseUrl = 'http://www.boredapi.com/api/activity/';
   let queryUrl: string = '';
@@ -84,7 +101,8 @@ const runFilteredFetch = async (e: Event): Promise<void> => {
     key: data.key,
   };
 
-  heading.innerHTML = activity.activity;
+  heading1.innerHTML = '';
+  heading2.innerHTML = activity.activity;
 };
 
 mainBtn.addEventListener('click', runFetch);

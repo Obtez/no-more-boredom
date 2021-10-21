@@ -35,14 +35,17 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 var _this = this;
-var heading = document.querySelector('h1');
+var body = document.querySelector('body');
+var mainSection = document.querySelector('main');
+var heading1 = document.querySelector('h1');
+var heading2 = document.querySelector('h2');
 var mainBtn = document.querySelector('#main-btn');
 var filterForm = document.querySelector('#filter-form');
 var typeSelect = document.querySelector('#type');
-var resetFilterBtn = document.querySelector('#reset-filter-btn');
 var handleError = function (error) {
     console.log(error);
-    heading.innerHTML = 'Something went wrong...';
+    heading1.innerHTML = 'Something went wrong...';
+    heading2.innerHTML = 'Want to try again?';
     mainBtn.innerHTML = 'Try again';
 };
 var applyFilter = function () {
@@ -78,16 +81,26 @@ var fetchRandomActivity = function () { return __awaiter(_this, void 0, void 0, 
         }
     });
 }); };
+var switchStyling = function () {
+    body.style.backgroundColor = '#ADDEFA';
+    mainSection.style.backgroundImage =
+        "url('./assets/img/happy-background.svg')";
+    mainBtn.style.backgroundColor = '#';
+    mainBtn.style.color = '#2D2D2D';
+    mainBtn.innerHTML = 'TRY AGAIN';
+};
 var runFetch = function () { return __awaiter(_this, void 0, void 0, function () {
     var activity;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                heading.innerHTML = 'Hmm. How about...';
+                heading1.innerHTML = '';
+                heading2.innerHTML = 'Hmm. How about...';
                 return [4, fetchRandomActivity()];
             case 1:
                 activity = _a.sent();
-                heading.innerHTML = activity.activity;
+                switchStyling();
+                heading2.innerHTML = activity.activity;
                 return [2];
         }
     });
@@ -98,7 +111,8 @@ var runFilteredFetch = function (e) { return __awaiter(_this, void 0, void 0, fu
         switch (_a.label) {
             case 0:
                 e.preventDefault();
-                heading.innerHTML = 'Hmm. How about...';
+                heading1.innerHTML = '';
+                heading2.innerHTML = 'Hmm. How about...';
                 filter = applyFilter();
                 baseUrl = 'http://www.boredapi.com/api/activity/';
                 queryUrl = '';
@@ -118,7 +132,8 @@ var runFilteredFetch = function (e) { return __awaiter(_this, void 0, void 0, fu
                     link: data.link,
                     key: data.key
                 };
-                heading.innerHTML = activity.activity;
+                heading1.innerHTML = '';
+                heading2.innerHTML = activity.activity;
                 return [2];
         }
     });
