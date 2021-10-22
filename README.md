@@ -12,9 +12,9 @@
 
 ## To Do
 
-- [ ] overflow scrolling only when needed and NOT x-axis
-- [ ] mobile: more padding at bottom of page
 - [ ] add favicon
 - [ ] add arrow to click between sections
+- [ ] background: front = dark -> back = bright
+- [ ] disable full body scrolling on cards
 
 ## License

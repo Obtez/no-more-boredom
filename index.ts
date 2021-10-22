@@ -101,22 +101,10 @@ const attachSwipeEventListener = (): void => {
       false
     );
   });
+  styleTiles();
 };
 
 attachSwipeEventListener();
-
-// Activity Tiles Event Listeners
-const handleSwipe = (e: TouchEvent): void => {};
-
-const activityTilesEventListeners = (): void => {
-  activityTiles.forEach((tile: HTMLDivElement) => {
-    tile.addEventListener('swiped-up', (e: Event) => {
-      console.log(e);
-    });
-  });
-};
-
-activityTilesEventListeners();
 
 // Main Functions
 const handleError = (error: Error): void => {

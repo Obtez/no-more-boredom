@@ -95,17 +95,9 @@ var attachSwipeEventListener = function () {
             handleGesture();
         }, false);
     });
+    styleTiles();
 };
 attachSwipeEventListener();
-var handleSwipe = function (e) { };
-var activityTilesEventListeners = function () {
-    activityTiles.forEach(function (tile) {
-        tile.addEventListener('swiped-up', function (e) {
-            console.log(e);
-        });
-    });
-};
-activityTilesEventListeners();
 var handleError = function (error) {
     console.log(error);
     heading1.innerHTML = 'Something went wrong...';
