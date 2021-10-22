@@ -43,63 +43,6 @@ var mainBtn = document.querySelector('#main-btn');
 var tilesSection = document.querySelector('#activity-tiles-section');
 var activityTiles = Array.from(document.querySelectorAll('.activity-tile'));
 var tilesSectionBackgroundContainer = document.querySelector('#activity-section-bg');
-var styleTiles = function () {
-    activityTiles.forEach(function (tile, index) {
-        var screenWidth = window.innerWidth;
-        var width = (screenWidth * 0.9 - index * 8).toString() + 'px';
-        var height = (screenWidth * 0.9).toString() + 'px';
-        var zIndex = activityTiles.length - index;
-        var positionTop = (index * -15).toString() + 'px';
-        var positionLeft = ((index * 8) / 2).toString() + 'px';
-        var opacity = zIndex / activityTiles.length;
-        tile.style.width = width;
-        tile.style.height = height;
-        tile.style.zIndex = zIndex.toString();
-        tile.style.top = positionTop;
-        tile.style.left = positionLeft;
-        tile.style.opacity = opacity.toString();
-    });
-};
-styleTiles();
-var touchstartX = 0;
-var touchstartY = 0;
-var touchendX = 0;
-var touchendY = 0;
-var element = document.getElementById('education');
-var evaluateGesture = function () {
-    if (touchendX < touchstartX) {
-        return 'swiped-up';
-    }
-    if (touchendX > touchstartX) {
-        return 'swiped-down';
-    }
-    if (touchendY == touchstartY) {
-        return 'tap';
-    }
-};
-var handleGesture = function () {
-    var gesture = evaluateGesture();
-    if (gesture === 'swiped-up') {
-        var lastTile = activityTiles.shift();
-        activityTiles.push(lastTile);
-        styleTiles();
-    }
-};
-var attachSwipeEventListener = function () {
-    activityTiles.forEach(function (tile) {
-        tile.addEventListener('touchstart', function (e) {
-            touchstartX = e.changedTouches[0].screenX;
-            touchstartY = e.changedTouches[0].screenY;
-        }, false);
-        tile.addEventListener('touchend', function (e) {
-            touchendX = e.changedTouches[0].screenX;
-            touchendY = e.changedTouches[0].screenY;
-            handleGesture();
-        }, false);
-    });
-    styleTiles();
-};
-attachSwipeEventListener();
 var handleError = function (error) {
     console.log(error);
     heading1.innerHTML = 'Something went wrong...';

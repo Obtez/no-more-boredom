@@ -61,41 +61,45 @@ button {
 
 #activity-tiles-section {
   height: 100vh;
-  padding: 4rem 5% 8rem 5%;
   display: flex;
   flex-direction: column;
 }
 
-#activity-tiles-section > h1 {
-  margin-bottom: 10rem;
+#activity-tiles-section > h2 {
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  text-align: center;
+  align-self: center;
 }
 
 #activity-tiles-container {
-  position: relative;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
 }
 
 .activity-tile {
-  position: absolute;
-  padding: 4rem 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  margin-bottom: 4px;
+  padding: 2rem 4rem 2rem 2rem;
+  display: grid;
+  grid-template-columns: 30% auto;
   align-items: center;
-  border-radius: 4px;
   font-size: 1.5rem;
   font-weight: 700;
 }
 
 .activity-icon {
-  display: block;
-  font-size: 8rem;
+  display: inline-block;
+  font-size: 2rem;
   color: #333;
+  justify-self: start;
 }
 
 /* Theme classes */
 /* BORED */
 .bored-bg {
-  background-color: #c4ced3;
+  background-color: #c4cbd3;
 }
 
 .bored-bg-img {
@@ -107,8 +111,7 @@ button {
 }
 
 .bored-tiles-card {
-  /* background-color: #9faaaf; */
-  background-color: #666;
+  background-color: #fdef71;
 }
 
 .bored-tiles-card:hover {
