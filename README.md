@@ -15,6 +15,6 @@
 - [ ] add favicon
 - [ ] add arrow to click between sections
 - [ ] background: front = dark -> back = bright
-- [ ] disable full body scrolling on cards
+- [ ] rethink mobile activity tiles display
 
 ## License

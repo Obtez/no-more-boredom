@@ -33,16 +33,18 @@ const tilesSectionBackgroundContainer: HTMLDivElement = document.querySelector(
 const styleTiles = (): void => {
   activityTiles.forEach((tile: HTMLDivElement, index) => {
     const screenWidth = window.innerWidth;
-    const width: string = (screenWidth * 0.9).toString() + 'px';
-    const height: string = width;
+    const width: string = (screenWidth * 0.9 - index * 8).toString() + 'px';
+    const height: string = (screenWidth * 0.9).toString() + 'px';
     const zIndex: number = activityTiles.length - index;
     const positionTop: string = (index * -15).toString() + 'px';
+    const positionLeft: string = ((index * 8) / 2).toString() + 'px';
     const opacity: number = zIndex / activityTiles.length;
 
     tile.style.width = width;
     tile.style.height = height;
     tile.style.zIndex = zIndex.toString();
     tile.style.top = positionTop;
+    tile.style.left = positionLeft;
     tile.style.opacity = opacity.toString();
   });
 };

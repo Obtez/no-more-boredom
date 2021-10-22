@@ -46,15 +46,17 @@ var tilesSectionBackgroundContainer = document.querySelector('#activity-section-
 var styleTiles = function () {
     activityTiles.forEach(function (tile, index) {
         var screenWidth = window.innerWidth;
-        var width = (screenWidth * 0.9).toString() + 'px';
-        var height = width;
+        var width = (screenWidth * 0.9 - index * 8).toString() + 'px';
+        var height = (screenWidth * 0.9).toString() + 'px';
         var zIndex = activityTiles.length - index;
         var positionTop = (index * -15).toString() + 'px';
+        var positionLeft = ((index * 8) / 2).toString() + 'px';
         var opacity = zIndex / activityTiles.length;
         tile.style.width = width;
         tile.style.height = height;
         tile.style.zIndex = zIndex.toString();
         tile.style.top = positionTop;
+        tile.style.left = positionLeft;
         tile.style.opacity = opacity.toString();
     });
 };
